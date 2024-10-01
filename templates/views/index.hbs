@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+
+        <section class="hero">
+            <h1>Check Your Local Weather</h1>
+            <p>Get up-to-date weather and forecasts for any location around the world.</p>
+
+            <form id="weather-form">
+                <input id="location-input" type="text" placeholder="Enter location..." aria-label="Enter location">
+                <button type="submit" class="btn">Search</button>
+                <ul class="search-results" id="search-results"></ul>
+            </form>
+
+            <div class="container" id="weather-container" style="display: none;">
+                <div class="current-weather">
+                    <h2>Current Weather</h2>
+                    <div class="weather-info">
+                        <div class="condition">
+                            <img id="weather-icon" alt="Weather Icon">
+                            <p id="weather-condition"></p>
+                        </div>
+                        <div class="temperature">
+                            <p id="current-temp"></p>
+                            <p id="min-max-temp"></p>
+                        </div>
+                        <div class="extra-info">
+                            <p id="chance-of-rain"></p>
+                            <p id="chance-of-snow"></p>
+                            <p id="wind-speed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast">
+                    <h2>3-Day Forecast</h2><br>
+                    <div id="forecast-days" class="forecast-days"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    {{>footer}}
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

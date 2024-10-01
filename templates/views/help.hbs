@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Help</title>
+    <link rel="icon" href="/img/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <main class="help-main">
+    <section class="help-section">
+      <h1>Help & FAQ</h1>
+      <p>Having trouble using the Weather App? Check out our frequently asked questions below or contact us for further assistance.</p>
+
+      <div class="faq">
+        <h2>Frequently Asked Questions</h2><br>
+
+        <div class="question">
+          <h3>1. How do I search for a city?</h3>
+          <p>Simply type the name of the city into the search bar. As you type, suggestions will appear. You can either select a suggestion using your mouse or the arrow keys, then press enter to view the weather for that location.</p>
+        </div>
+
+        <div class="question">
+          <h3>2. Why am I not seeing any results?</h3>
+          <p>Make sure you have entered the city name correctly. If you're still having trouble, ensure your internet connection is active, as the app relies on fetching real-time data from the weather API.</p>
+        </div>
+
+        <div class="question">
+          <h3>3. How accurate is the weather information?</h3>
+          <p>We use the OpenWeather API to fetch weather data, which is updated frequently and is generally accurate. However, weather conditions may change quickly, so it's always good to check regularly.</p>
+        </div>
+
+        <div class="question">
+          <h3>4. Can I see weather forecasts for multiple days?</h3>
+          <p>Yes, once you search for a location, the app will display the current weather and the forecast for the upcoming days.</p>
+        </div>
+
+        <div class="question">
+          <h3>5. How can I contact support?</h3>
+          <p>If you have further questions or need help, please visit the <a href="contact.html">Contact</a> page to reach out to us.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+    </div>
+    
+    {{>footer}}
+</body>
+
+</html>

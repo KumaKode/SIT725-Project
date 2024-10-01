@@ -11,6 +11,9 @@ const windSpeed = document.getElementById("wind-speed");
 const forecastDaysContainer = document.getElementById("forecast-days");
 const currentWeatherSection = document.querySelector(".current-weather");
 const forecastSection = document.querySelector(".forecast");
+const hourlyWeatherContainer = document.getElementById(
+  "hourly-weather-container"
+);
 
 search.addEventListener("input", function () {
   const query = search.value.trim().toLowerCase();
@@ -23,6 +26,30 @@ search.addEventListener("input", function () {
     searchResults.style.display = "none";
   }
 });
+
+search.addEventListener("keydown", function (e) {
+  const items = searchResults.querySelectorAll("li");
+
+  if (e.key === "ArrowDown") {
+    selectedIndex = (selectedIndex + 1) % items.length;
+    highlightItem(items);
+  } else if (e.key === "ArrowUp") {
+    selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+    highlightItem(items);
+  } else if (e.key === "Enter") {
+    if (selectedIndex > -1 && items[selectedIndex]) {
+      search.value = items[selectedIndex].textContent;
+      searchResults.style.display = "none";
+    }
+  }
+});
+
+function highlightItem(items) {
+  items.forEach((item) => item.classList.remove("active"));
+  if (items[selectedIndex]) {
+    items[selectedIndex].classList.add("active");
+  }
+}
 
 async function fetchResults(query) {
   try {
@@ -80,6 +107,30 @@ function fetchWeatherData(location) {
         chanceOfRain.textContent = `Today Chance of Rain: ${forecast[0].day.daily_chance_of_rain}%`;
         chanceOfSnow.textContent = `Today Chance of Snow: ${forecast[0].day.daily_chance_of_snow}%`;
         windSpeed.textContent = `Wind: Max ${forecast[0].day.maxwind_kph} kph`;
+
+        // Update hourly forecast
+        hourlyWeatherContainer.innerHTML = "";
+
+        const hourlyData = data.forecast[0].hour; // Access today's hourly forecast
+        const currentHour = new Date().getHours(); // Get the current hour
+
+        // Loop through the hourly data starting from the next hour
+        for (let i = currentHour + 1; i < hourlyData.length; i++) {
+          const hour = hourlyData[i];
+          const hourlyItem = document.createElement("div");
+          hourlyItem.classList.add("hourly-weather-item");
+
+          // Create hourly weather display
+          hourlyItem.innerHTML = `
+        <p>${new Date(hour.time).getHours()}:00</p>
+        <img src="${hour.condition.icon}" alt="Weather Icon">
+        <p>${hour.temp_c}°C</p>
+        <p>Rain: ${hour.chance_of_rain}%</p>
+    `;
+
+          // Add the item to the container
+          hourlyWeatherContainer.appendChild(hourlyItem);
+        }
 
         // Update 3-day forecast
         forecastDaysContainer.innerHTML = ""; // Clear previous forecast

@@ -2,7 +2,7 @@ require("dotenv").config();
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const wApp = require("./utils/wApp");
+const wApp = require("./utils/w-app");
 
 const app = express();
 const port = process.env.PORT || 3000;

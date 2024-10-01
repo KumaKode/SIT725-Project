@@ -272,3 +272,38 @@ main::-webkit-scrollbar-track {
   background-color: #e0e0e0;
   border-radius: 10px;
 }
+
+.hourly-weather {
+  margin-top: 20px;
+}
+
+.hourly-weather-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  justify-content: center;
+}
+
+.hourly-weather-item {
+  flex: 0 0 auto;
+  width: 100px;
+  margin-right: 10px;
+  text-align: center;
+  background-color: #87c1ff;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.hourly-weather-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.hourly-weather-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hourly-weather-container::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
